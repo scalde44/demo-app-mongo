@@ -14,6 +14,6 @@ public class GsonEventSerializer implements StoredEvent.EventSerializer {
 
     @Override
     public String serialize(DomainEvent object) {
-        return new Gson().toJson(object);
+        return new Gson().toJson(object, object.getClass());
     }
 }
