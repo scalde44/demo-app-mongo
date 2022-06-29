@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
   origin: ${ORIGIN:*}
 spring:
   main:
@@ -9,12 +9,17 @@ spring:
       enabled: ALWAYS
   application:
     name: scoreextraction-core
-  bus:
-    uri: ${BUS_URI:amqp://bbnscxka:zt-7NS8ba5w6gV_eF4gW_7v82kDzt2TF@moose.rmq.cloudamqp.com/bbnscxka}
-  commands:
-    uri: ${MONGO_URI:mongodb+srv://scalde44:Scalderon4@clusterprueba.bzwwx.mongodb.net/events?retryWrites=true&w=majority}
-  queries:
-    uri: ${MONGO_URI:mongodb+srv://scalde44:Scalderon4@clusterprueba.bzwwx.mongodb.net/views?retryWrites=true&w=majority}
+  rabbitmq:
+    addresses: ${BUS_URI:amqps://bbnscxka:zt-7NS8ba5w6gV_eF4gW_7v82kDzt2TF@moose.rmq.cloudamqp.com/bbnscxka}
+    #bus:
+    # uri: ${BUS_URI:amqp://bbnscxka:zt-7NS8ba5w6gV_eF4gW_7v82kDzt2TF@moose.rmq.cloudamqp.com/bbnscxka}
+  data:
+    mongodb:
+      uri: ${MONGO_URI:mongodb+srv://scalde44:Scalderon4@clusterprueba.bzwwx.mongodb.net/events?retryWrites=true&w=majority}
+#  commands:
+#    uri: ${MONGO_URI:mongodb+srv://scalde44:Scalderon4@clusterprueba.bzwwx.mongodb.net/events?retryWrites=true&w=majority}
+#  queries:
+#    uri: ${MONGO_URI:mongodb+srv://scalde44:Scalderon4@clusterprueba.bzwwx.mongodb.net/views?retryWrites=true&w=majority}
 logging:
   pattern:
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
