@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>scoreextraction</artifactId>
-        <groupId>co.com.sofka</groupId>
+        <groupId>org.example</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -41,9 +41,8 @@
         </dependency>
 
 
-
         <dependency>
-            <groupId>co.com.sofka</groupId>
+            <groupId>org.example</groupId>
             <artifactId>business</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
@@ -116,19 +115,19 @@
     <build>
         <plugins>
             <plugin>
-                <!-- Build an executable JAR -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springboot.version}</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>co.com.sofka.application.Application</mainClass>
-                        </manifest>
-                    </archive>
+                    <mainClass>org.example.application.Application</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
@@ -156,6 +155,5 @@
                 </dependencies>
             </plugin>
         </plugins>
-
     </build>
 </project>
